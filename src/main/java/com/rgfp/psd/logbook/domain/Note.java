@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
 @Entity
@@ -65,5 +66,15 @@ public class Note {
           return "";
       }
 
+    }
+
+    public Note clone() {
+        Note nota = new Note();
+
+        nota.setTitle(this.title);
+        nota.setContent(this.content);
+        nota.setTimestamp(LocalDateTime.now());
+
+        return nota;
     }
 }

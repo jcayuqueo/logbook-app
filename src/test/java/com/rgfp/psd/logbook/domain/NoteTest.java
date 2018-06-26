@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class NoteTest {
 
@@ -32,17 +33,31 @@ public class NoteTest {
         assertEquals(myMensaje, getSummary);
     }
 
-//    @Test
-//    public void pruebaClonarLinea(){
-//        Note myNote = new Note();
-//
-//        myNote.setId(8);
-//        myNote.setTimestamp("2018-06-26");
-//        myNote.setContent("Prueba Jose");
-//        myNote.setTitle("Prueba");
-//
-//        assertEquals(, myNote );
-//
-//    }
+    @Test
+    public void pruebaClonarLineaMetodoDevuelveNull(){
+        Note nota = new Note();
+        nota.setTitle("Prueba");
+        nota.setContent("Segundo texto");
+        nota.setTimestamp(LocalDateTime.parse("2018-06-26T00:00"));
+
+        Note notaNueva = nota.clone();
+
+        assertEquals(nota.getTitle(), notaNueva.getTitle() );
+        assertEquals(nota.getContent(), notaNueva.getContent() );
+        assertNotEquals(nota.getTimestamp(), notaNueva.getTimestamp() );
+
+    }
+
+    @Test
+    public void pruebaClonarLinea(){
+        Note nota = new Note();
+
+        Note notaNueva = nota.clone();
+
+        assertEquals(nota.getTitle(), notaNueva.getTitle() );
+        assertEquals(nota.getContent(), notaNueva.getContent() );
+        assertNotEquals(nota.getTimestamp(), notaNueva.getTimestamp() );
+
+    }
 
 }
