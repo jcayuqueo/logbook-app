@@ -53,7 +53,17 @@ public class Note {
     }
 
     public String getSummary() {
-        // not implemented
-        return "";
+
+      try{
+          if (content.length() > 15) {
+              return  content.substring(0, 15);
+          }else {
+              return content;
+          }
+      }catch(Exception e){
+          System.err.println("Error al cortar el texto, "+e.getMessage());
+          return "";
+      }
+
     }
 }
